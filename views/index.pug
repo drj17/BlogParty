@@ -2,9 +2,8 @@ extends layout.pug
 
 block content
   main
-    h1 I'll be an h1 tag
-    ul
-      for post in blogs
-        li= post.author
-    p.alert Here's a body of text with that class 'alert!'
-    .action divs are so common you can just write the class
+    for post in blogs
+      h2= post.author
+      p=post.body
+      form(method="POST", action=`/${post.id}?_method=DELETE`)
+        input(type="submit", value="Delete Blog")
